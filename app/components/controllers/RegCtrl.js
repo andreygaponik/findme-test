@@ -1,4 +1,4 @@
-var RegCtrl = function($scope, Auth) {
+var RegCtrl = function($scope, $firebaseAuth, Auth) {
 	$scope.name = 'Register';
 	console.log('RegCtrl test');
 
@@ -6,8 +6,13 @@ var RegCtrl = function($scope, Auth) {
 
 	$scope.createUser = function() {
 		console.log('clck');
-      $scope.message = null;
-      $scope.error = null;
+    $scope.message = null;
+    $scope.error = null;
+
+    console.log(firebase.auth());
+    firebase.auth().$createUser({
+      email: $scope.email
+    })
 
       // Auth.$createUser({
       //   email: $scope.email,
@@ -37,5 +42,5 @@ var RegCtrl = function($scope, Auth) {
  //    };
 };
 
-RegCtrl.$inject = ['$scope', 'Auth'];
+RegCtrl.$inject = ['$scope', '$firebaseAuth','Auth'];
 app.controller('RegCtrl', RegCtrl);
