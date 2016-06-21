@@ -1,0 +1,25 @@
+.header {
+	background: #4C4C4C;
+	color: #fff;
+}
+
+.header li {
+	display: inline-block;
+}
+
+.header li a {
+	color: #ccc;
+}
+
+.header li a:hover {
+	color: #4c4c4c;
+}
+
+.aside {
+	height: 100%;
+	width: 100%;
+	background: #4c4c4c;
+	position: absolute;
+	left: 0;
+	top: 0;
+}

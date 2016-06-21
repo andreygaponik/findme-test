@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>Document</title>
+
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="app/styles/css/style.css">
+<!-- 	<link rel="stylesheet/less" href="bower_components/bootstrap/less/bootstrap.less">
+	<link rel="stylesheet/less" href="app/styles/less/header.less"> -->
+</head>
+<body ng-controller="MainCtrl">
+	<header class="header">
+		<nav class="nav">
+			<li><a href="#/home">Home</a></li>
+			<li><a href="#/register">Sign Up</a></li>
+			<li><a href="#/signin">Sign In</a></li>
+		</nav>
+	</header>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-3">
+				<aside class="aside">
+					<a href="">asd</a>
+				</aside>
+			</div>
+			<div class="col-md-9">
+				<div ng-view></div>
+			</div>
+		</div>
+	</div>
+
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="bower_components/angular-route/angular-route.min.js"></script>
+	<script src="bower_components/firebase/firebase.js"></script>
+	<script src="bower_components/angularfire/dist/angularfire.js"></script>
+
+
+	<script src="app/components/app.js"></script>
+	<script src="app/components/controllers/controllers.js"></script>
+	<script src="app/components/controllers/HomeCtrl.js"></script>
+
+	<!-- Firebase components -->
+	<script src="app/components/services/auth.service.js"></script>
+
+	<script src="app/components/controllers/RegCtrl.js"></script>
+	<script src="app/components/routers/routers.js"></script>
+
+
+</body>
+</html>
