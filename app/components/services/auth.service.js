@@ -16,7 +16,7 @@
 //   }
 // ]);
 
-app.factory('Auth', function($firebaseAuth){
+app.factory('Auth', function(){
   //var ref = new Firebase("https://findme-test-app.firebaseio.com/");
   //return $firebaseAuth(ref);	
 

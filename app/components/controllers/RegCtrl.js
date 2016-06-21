@@ -5,14 +5,20 @@ var RegCtrl = function($scope, $firebaseAuth, Auth) {
 
 
 	$scope.createUser = function() {
-		console.log('clck');
+
+    var auth = $firebaseAuth();
+
     $scope.message = null;
     $scope.error = null;
 
-    console.log(firebase.auth());
-    firebase.auth().$createUser({
-      email: $scope.email
+    auth.$createUserWithEmailAndPassword($scope.email, $scope.password)
+    .then(function(response) {
+     console.log(response);
     })
+    .catch(function(err) {
+     console.log('Something went wrong', err);
+    });
+
 
       // Auth.$createUser({
       //   email: $scope.email,
@@ -22,6 +28,7 @@ var RegCtrl = function($scope, $firebaseAuth, Auth) {
       // }).catch(function(error) {
       //   $scope.error = error;
       // });		
+
 
 
 
