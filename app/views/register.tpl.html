@@ -1,14 +1,22 @@
 <div>
 	<h1> {{ name }} </h1>
-
+	
 	<form role="form">
+		<div class="form-group">
+			<label for="InputFirstName">First Name</label>
+			<input type="text" class="form-control" id="InputFirstName" ng-model="fullName">
+		</div>
+		<div class="form-group">
+			<label for="InputLastName">Last Name</label>
+			<input type="text" class="form-control" id="InputLastName">
+		</div>
 	  <div class="form-group">
-	    <label for="exampleInputEmail1">Email</label>
-	    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" ng-model="email">
+	    <label for="InputEmail1">Email</label>
+	    <input type="email" class="form-control" id="InputEmail1" ng-model="email">
 	  </div>
 	  <div class="form-group">
-	    <label for="exampleInputPassword1">Password</label>
-	    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ng-model="password">
+	    <label for="InputPassword1">Password</label>
+	    <input type="password" class="form-control" id="InputPassword1" ng-model="password">
 	  </div>
   <button type="submit" ng-click="createUser()" class="btn btn-default">Send</button>
 

@@ -6,10 +6,17 @@ var RouterConfiguration = function($routeProvider) {
 			templateUrl: 'app/views/register.tpl.html',
 			controller: 'RegCtrl'
 		})
+		.when('/signin', {
+			templateUrl: 'app/views/signin.tpl.html',
+			controller: 'SignCtrl'
+		})
 		.when('/home', {
 			templateUrl: 'app/views/home.tpl.html',
 			controller: 'HomeCtrl'
 		})
+		.otherwise({
+        redirectTo: '/signin'
+    });
 };
 
 RouterConfiguration.$inject = ['$routeProvider'];

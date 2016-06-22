@@ -13,9 +13,9 @@
 <body ng-controller="MainCtrl">
 	<header class="header">
 		<nav class="nav">
-			<li><a href="#/home">Home</a></li>
-			<li><a href="#/register">Sign Up</a></li>
-			<li><a href="#/signin">Sign In</a></li>
+			<li><a href="#/home" ng-show="user">Home</a></li>
+			<li><a href="#/register" ng-hide="user">Sign Up</a></li>
+			<li><a href="#/signin" ng-hide="user">Sign In</a></li>
 		</nav>
 	</header>
 
@@ -23,7 +23,7 @@
 		<div class="row">
 			<div class="col-md-3">
 				<aside class="aside">
-					<a href="">asd</a>
+					<a href="">aside</a>
 				</aside>
 			</div>
 			<div class="col-md-9">
@@ -46,6 +46,7 @@
 	<script src="app/components/services/auth.service.js"></script>
 
 	<script src="app/components/controllers/RegCtrl.js"></script>
+	<script src="app/components/controllers/SignCtrl.js"></script>
 	<script src="app/components/routers/routers.js"></script>
 
 

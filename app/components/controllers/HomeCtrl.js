@@ -1,8 +1,39 @@
 'use strict';
 
-var HomeCtrl = function($scope) {
-	console.log('HomeCtrl test')
+var HomeCtrl = function($scope, $rootScope, $firebaseAuth, Auth) {
+	// var auth = $firebaseAuth();
+	// var user = $firebaseAuth().currentUser;
+
+	// Auth.authState();
+
+	$scope.logOut = Auth.logOut;
+
+	console.log(Auth.getRef());
+
+	console.log(Auth.getId());
+
+	// auth.$onAuthStateChanged(function(user) {
+	// 	if (user != null) {
+	// 	  name = user.displayName;
+	// 	  $scope.email = user.email;
+	// 	  photoUrl = user.photoURL;
+	// 	  $scope.uid = user.uid; 
+	// 	}
+	//   console.log($scope.uid)
+	// });
+
+	// $scope.signOut = function() {
+	// 	auth.$signOut()
+	// 	.then(function() {
+	// 	  // Sign-out successful.
+	// 	  console.log('logout')
+	// 	}, function(error) {
+	// 	  // An error happened.
+	// 	  console.log(error)
+	// 	});
+	// }
+
 }
 
-HomeCtrl.$inject = ['$scope'];
+HomeCtrl.$inject = ['$scope', '$rootScope', '$firebaseAuth', 'Auth'];
 app.controller('HomeCtrl', HomeCtrl);
