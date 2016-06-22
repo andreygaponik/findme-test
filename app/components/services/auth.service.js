@@ -17,14 +17,20 @@ app.factory('Auth', function($rootScope, $firebaseAuth, $location){
 
   auth.$onAuthStateChanged(function(user) {
     if (user != null) {
-      $rootScope.fullName = user.displayName;
+      $rootScope.displayName = user.displayName;
       $rootScope.email = user.email;
       $rootScope.uid = user.uid; 
+
+      
     }
 
+
     $rootScope.user = user;
-    $rootScope.uid = user.uid;
-    console.log(user)
+    // $rootScope.displayName = user.displayName;
+    // $rootScope.email = user.email;
+    // $rootScope.uid = user.uid;
+
+
   });
   // function writeUserData(userId, name, email) {
   //   firebase.database().ref('users/' + userId).set({
@@ -40,8 +46,16 @@ app.factory('Auth', function($rootScope, $firebaseAuth, $location){
     },
 
     getId: function() {
-      return $rootScope.uid
+      return $rootScope.name1
     },
+
+
+
+    // addData: function(response) {
+    //   firebase.database().ref('users/' + response.uid).set({
+    //     uid: 'asd'
+    //   });
+    // },
 
     // not working
 
