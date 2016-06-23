@@ -15,30 +15,6 @@ app.factory('Auth', function($rootScope, $firebaseAuth, $location){
 
   var auth = $firebaseAuth();
 
-  auth.$onAuthStateChanged(function(user) {
-    if (user != null) {
-      $rootScope.displayName = user.displayName;
-      $rootScope.email = user.email;
-      $rootScope.uid = user.uid; 
-
-      
-    }
-
-
-    $rootScope.user = user;
-    // $rootScope.displayName = user.displayName;
-    // $rootScope.email = user.email;
-    // $rootScope.uid = user.uid;
-
-
-  });
-  // function writeUserData(userId, name, email) {
-  //   firebase.database().ref('users/' + userId).set({
-  //     username: name,
-  //     email: email
-  //   });
-  // }
-
 	return {
 
     getRef: function() {
@@ -46,15 +22,59 @@ app.factory('Auth', function($rootScope, $firebaseAuth, $location){
     },
 
     getId: function() {
-      return $rootScope.name1
+      $rootScope.asd = 'asd';
+      return $rootScope.asd
+    },
+
+    getName: function() {
+      auth.$onAuthStateChanged(function(user) {
+
+        if (user != null) {
+          // $rootScope.displayName = user.displayName;
+          $rootScope.user = user;
+          $rootScope.email = user.email;
+          $rootScope.uid = user.uid;   
+          
+          firebase.database().ref('/users/' + $rootScope.uid).on('value', function(snapshot) {
+            $rootScope.user = snapshot.val();
+            console.log($rootScope.user.firstName);
+          });
+            
+          $rootScope.name1 = $rootScope.user.firstName + '.';
+
+          user.providerData.forEach(function (profile) {
+            console.log("Sign-in provider: "+profile.providerId);
+            console.log("  Provider-specific UID: "+profile.uid);
+            console.log("  Name: "+profile.displayName);
+            console.log("  Email: "+profile.email);
+            console.log("  Photo URL: "+profile.photoURL);
+          });    
+        }    
+
+      });
     },
 
 
 
-    // addData: function(response) {
-    //   firebase.database().ref('users/' + response.uid).set({
-    //     uid: 'asd'
-    //   });
+    // authState: function() {      
+
+    //   firebase.database().ref('/users/' + $rootScope.uid).on('value', function(snapshot) {
+    //     $rootScope.user = snapshot.val();
+
+    //     auth.$onAuthStateChanged(function(user) {
+    //       if (user != null) {
+    //         $rootScope.displayName = user.displayName;
+    //         $rootScope.email = user.email;
+    //         $rootScope.uid = user.uid; 
+    //       }    
+
+    //     });
+
+    //     console.log($rootScope.user);
+            
+    //   });     
+
+      
     // },
 
     // not working
@@ -86,9 +106,10 @@ app.factory('Auth', function($rootScope, $firebaseAuth, $location){
     // },
 
     logOut: function() {
-        auth.$signOut();
-        $rootScope.user = undefined;
-        $location.path('/signin'); 
+      $rootScope.user = undefined;
+      auth.$signOut();
+        
+      $location.path('/signin'); 
       }
   }
 

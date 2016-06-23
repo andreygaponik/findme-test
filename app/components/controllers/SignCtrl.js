@@ -9,6 +9,7 @@ var SignCtrl = function($scope, $rootScope, $firebaseAuth, $location, Auth) {
 		.$signInWithEmailAndPassword($scope.email, $scope.password)
 		.then(function(response) {
 			console.log(response);
+			
 			$location.path('/home');
 		})
 		.catch(function(error) {
