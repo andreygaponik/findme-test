@@ -18,6 +18,7 @@ var RegCtrl = function($scope, $rootScope, $firebaseAuth, $location, Auth) {
 
         Auth.logOut();
         $location.path('/signin');
+        
         console.log(response.uid);
 
       })

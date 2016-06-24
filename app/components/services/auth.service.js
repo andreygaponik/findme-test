@@ -37,10 +37,16 @@ app.factory('Auth', function($rootScope, $firebaseAuth, $location){
           
           firebase.database().ref('/users/' + $rootScope.uid).on('value', function(snapshot) {
             $rootScope.user = snapshot.val();
+
+            console.log($rootScope.user);
+            $rootScope.name1 = $rootScope.user.firstName + '.';
             console.log($rootScope.user.firstName);
-          });
             
-          $rootScope.name1 = $rootScope.user.firstName + '.';
+            $rootScope.$digest();
+
+            return $rootScope.user;
+          });            
+          console.log($rootScope.user);
 
           user.providerData.forEach(function (profile) {
             console.log("Sign-in provider: "+profile.providerId);
@@ -110,6 +116,7 @@ app.factory('Auth', function($rootScope, $firebaseAuth, $location){
       auth.$signOut();
         
       $location.path('/signin'); 
+
       }
   }
 

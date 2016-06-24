@@ -6,9 +6,9 @@ var HomeCtrl = function($scope, $rootScope, $firebaseAuth, Auth) {
 
 	// Auth.authState();
 
+  Auth.getName();
 	$scope.logOut = Auth.logOut;
 	// Auth.authState()
-	Auth.getName();
 
 
 	// auth.$onAuthStateChanged(function(user) {
