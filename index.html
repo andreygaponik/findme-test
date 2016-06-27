@@ -16,6 +16,7 @@
 			<li><a href="#/home" ng-show="user">Home</a></li>
 			<li><a href="#/register" ng-hide="user">Sign Up</a></li>
 			<li><a href="#/signin" ng-hide="user">Sign In</a></li>
+			<li><a href="#/settings" ng-show="user">Settings</a></li>
 		</nav>
 	</header>
 
@@ -36,6 +37,8 @@
 	<script src="bower_components/angular-route/angular-route.min.js"></script>
 	<script src="bower_components/firebase/firebase.js"></script>
 	<script src="bower_components/angularfire/dist/angularfire.js"></script>
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 
 	<script src="app/components/app.js"></script>
@@ -47,6 +50,7 @@
 
 	<script src="app/components/controllers/RegCtrl.js"></script>
 	<script src="app/components/controllers/SignCtrl.js"></script>
+	<script src="app/components/controllers/SettingsCtrl.js"></script>
 	<script src="app/components/routers/routers.js"></script>
 
 

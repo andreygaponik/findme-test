@@ -14,6 +14,10 @@ var RouterConfiguration = function($routeProvider) {
 			templateUrl: 'app/views/home.tpl.html',
 			controller: 'HomeCtrl'
 		})
+		.when('/settings', {
+			templateUrl: 'app/views/settings.tpl.html',
+			controller: 'SettingsCtrl'
+		})
 		.otherwise({
         redirectTo: '/signin'
     });

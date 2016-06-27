@@ -17,8 +17,8 @@ app.factory('Auth', function($rootScope, $firebaseAuth, $location){
 
 	return {
 
-    getRef: function() {
-      return firebase.database().ref()
+    getRef: function(user) {
+      return firebase.database().ref(user)
     },
 
     getId: function() {
@@ -28,34 +28,30 @@ app.factory('Auth', function($rootScope, $firebaseAuth, $location){
 
     getName: function() {
       auth.$onAuthStateChanged(function(user) {
+        $rootScope.uid = user.uid;   
 
         if (user != null) {
           // $rootScope.displayName = user.displayName;
           $rootScope.user = user;
           $rootScope.email = user.email;
-          $rootScope.uid = user.uid;   
           
           firebase.database().ref('/users/' + $rootScope.uid).on('value', function(snapshot) {
             $rootScope.user = snapshot.val();
 
             console.log($rootScope.user);
-            $rootScope.name1 = $rootScope.user.firstName + '.';
-            console.log($rootScope.user.firstName);
+
+            // users data
+            
+            $rootScope.firstName = $rootScope.user.firstName;
+            $rootScope.lastName = $rootScope.user.lastName
             
             $rootScope.$digest();
 
-            return $rootScope.user;
+            // return $rootScope.user;
           });            
-          console.log($rootScope.user);
-
-          user.providerData.forEach(function (profile) {
-            console.log("Sign-in provider: "+profile.providerId);
-            console.log("  Provider-specific UID: "+profile.uid);
-            console.log("  Name: "+profile.displayName);
-            console.log("  Email: "+profile.email);
-            console.log("  Photo URL: "+profile.photoURL);
-          });    
+ 
         }    
+        console.log($rootScope.user);
 
       });
     },

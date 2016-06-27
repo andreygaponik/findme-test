@@ -6,27 +6,29 @@ var RegCtrl = function($scope, $rootScope, $firebaseAuth, $location, Auth) {
 	$scope.createUser = function() {
     $scope.message = null;
     $scope.error = null;
-    $rootScope.name1 = $scope.name1;
+
+    $rootScope.firstName = $scope.firstName;
+    $rootScope.lastName = $scope.lastName;
 
     auth
       .$createUserWithEmailAndPassword($scope.email, $scope.password)
       .then(function(response) {
 
         firebase.database().ref('users/' + response.uid).set({
-          firstName: $rootScope.name1
+          firstName: $rootScope.firstName,
+          lastName: $rootScope.lastName
         });
 
         Auth.logOut();
         $location.path('/signin');
-        
-        console.log(response.uid);
+
+        // console.log(response.uid);
 
       })
       .catch(function(err) {
         console.log('Something went wrong', err);
       });
-
-  };
+    };
 
  //    $scope.removeUser = function() {
  //      $scope.message = null;

@@ -23,3 +23,28 @@
 	left: 0;
 	top: 0;
 }
+
+/*modal window styles*/
+
+.modal-backdrop {
+	position: relative;
+}
+
+.modal-open .modal {
+	width: 190px;
+	text-align: center;
+	left: auto;
+	margin: 12px;
+}
+
+.modal-open .modal-body {
+
+	padding: 25px;
+	padding-top: 20px;
+}
+
+.modal-open .modal p {
+	display: inline;
+	vertical-align: middle;
+	margin-top: -4px;
+}
