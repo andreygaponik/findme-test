@@ -43,7 +43,8 @@ app.factory('Auth', function($rootScope, $firebaseAuth, $location){
             // users data
             
             $rootScope.firstName = $rootScope.user.firstName;
-            $rootScope.lastName = $rootScope.user.lastName
+            $rootScope.lastName = $rootScope.user.lastName;
+            // $rootScope.avatar = $rootScope.user.avatar;
             
             $rootScope.$digest();
 
