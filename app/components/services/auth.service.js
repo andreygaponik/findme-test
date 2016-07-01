@@ -38,8 +38,6 @@ app.factory('Auth', function($rootScope, $firebaseAuth, $location){
           firebase.database().ref('/users/' + $rootScope.uid).on('value', function(snapshot) {
             $rootScope.user = snapshot.val();
 
-            console.log($rootScope.user);
-
             // users data
             
             $rootScope.firstName = $rootScope.user.firstName;
@@ -52,7 +50,6 @@ app.factory('Auth', function($rootScope, $firebaseAuth, $location){
           });            
  
         }    
-        console.log($rootScope.user);
 
       });
     },

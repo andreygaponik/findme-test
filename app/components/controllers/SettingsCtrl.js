@@ -3,49 +3,51 @@ var SettingsCtrl = function($scope, $rootScope, Auth, $timeout, fileUpload) {
   // console.log(Auth.getRef('asd'));
   Auth.getName();
 
-  // storage fb, in other service/ctrl
+  // storage fb, service/ctrl
 
-  var storageRef = firebase.storage().ref();
-  var imagesRef = storageRef.child('images');
-  console.log(imagesRef);
+  // var storageRef = firebase.storage().ref();
+  // var metadata = {
+  //   contentType: 'image/jpeg'
+  // };
+
+  var metadata = {
+    contentType: 'image/jpeg'
+  };
 
   $scope.uploadFile = function(){
-    var file = $scope.avatar;
-    var uploadTask = storageRef.child('images/' + file.name).put(file); // upload
-    $rootScope.file = file;
-    $rootScope.uploadTask = uploadTask;
+    $rootScope.file = $scope.avatar;
+
+    if ($rootScope.file.type === metadata.contentType) {
+
+      console.log('access');
+
+      // var uploadTask = storageRef.child('images/' + $rootScope.file.name).put($rootScope.file, metadata); // upload
+      fileUpload.uploadFile();
+
+      // uploadTask.on('state_changed', function(snapshot){
+      // }, function(error) {
+      //   console.log(error);
+
+      // }, function() {
+      //   $rootScope.downloadURL = uploadTask.snapshot.downloadURL;
+      // });
+
+    } else {
+      console.log('incorrect file format')
+    }
 
     console.log('file is ' );
-    console.dir(file);
-    // var uploadUrl = "/fileUpload";
-    // fileUpload.uploadFileToUrl(file, uploadUrl);
-  };
+    console.dir($rootScope.file);
+
+  };  
+
+
 
 	$scope.submit = function() {
     // avatar
 
     console.log($rootScope.uploadTask);
     console.log($rootScope.file);
-
-    $rootScope.uploadTask.on('state_changed', function(snapshot){
-
-    }, function(error) {
-
-    }, function() {
-      var downloadURL = $rootScope.uploadTask.snapshot.downloadURL;
-      console.log(downloadURL);
-
-    });
-
-    // $rootScope.uploadTask.on('state_changed', function(snapshot){
-    //   $rootScope.test = snapshot;
-
-    //   console.log($rootScope.test);
-    // }, function(error) {
-    // }, function() {
-    //   var downloadURL = $rootScope.uploadTask.snapshot.downloadURL;
-    // });
-
 
     // Uncaught Error: [$rootScope:inprog] 
     $rootScope.firstName = $scope.firstName;
@@ -55,12 +57,6 @@ var SettingsCtrl = function($scope, $rootScope, Auth, $timeout, fileUpload) {
       firstName: $rootScope.firstName,
       lastName: $rootScope.lastName
     });
-
-    // $rootScope.uploadTask.on('state_changed', function(snapshot){
-    // }, function(error) {
-    // }, function() {
-    //   var downloadURL = $rootScope.uploadTask.snapshot.downloadURL;
-    // });
 
     console.log($rootScope.firstName);
     console.log($rootScope.lastName);
